@@ -1,9 +1,8 @@
-var wakeuptime = 7;
+var morning = 7;
 var noon = 12;
-var lunchtime = 12;
-var naptime = lunchtime + 2;
 var partytime;
-var evening = 18;
+var evening = 17;
+var night = 20;
 
 // Getting it to show the current time on the page
 var showCurrentTime = function()
@@ -42,7 +41,7 @@ var showCurrentTime = function()
     }
  
     // put together the string that displays the time
-    var clockTime = hours + ':' + minutes + ':' + seconds + " " + meridian + "!";
+    var clockTime = hours + ':' + minutes + ':' + seconds + " " + meridian;
  
     clock.innerText = clockTime;
 };
@@ -59,38 +58,28 @@ var updateClock = function()
   
   if (time == partytime)
   {
-    image = "https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2016/08/partyTime.jpg";
+    image = "https://blogmedia.evbstatic.com/wp-content/uploads/wpmulti/sites/8/shutterstock_199419065.jpg";
     messageText = "Let's party!";
-  }
-  else if (time == wakeuptime)
-  {
-    image = "https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2016/09/cat1.jpg";
-    messageText = "Wake up!";
-  }
-  else if (time == lunchtime)
-  {
-    image = "https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2016/09/cat2.jpg";
-    messageText = "Let's have some lunch!";
-  }
-  else if (time == naptime)
-  {
-    image = "https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2016/09/cat3.jpg";
-    messageText = "Sleep tight!";
   }
   else if (time < noon)
   {
-    image = "https://pbs.twimg.com/profile_images/378800000532546226/dbe5f0727b69487016ffd67a6689e75a.jpeg";
+    image = "https://media-cdn.tripadvisor.com/media/photo-s/08/e2/f5/be/atlantis-oceanfront-inn.jpg";
     messageText = "Good morning!";
+  }
+  else if (time >= noon)
+  {
+    image = "https://www.macrobusiness.com.au/wp-content/uploads/2016/06/beach-afternoon-660x495.jpg";
+    messageText = "Good afternoon!";
   }
   else if (time >= evening)
   {
-    image = "https://upload.wikimedia.org/wikipedia/commons/8/8c/Cat_sleep.jpg";
+    image = "https://cdn.wallpaperdirect.com/shared-assets/images/products/089776orig.jpg";
     messageText = "Good evening!";
   }
-  else
+  else if (time >= night)
   {
-    image = "https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2016/08/normalTime.jpg";
-    messageText = "Good afternoon!";
+    image = "https://images.pexels.com/photos/355465/pexels-photo-355465.jpeg?cs=srgb&dl=astronomy-beautiful-clouds-355465.jpg&fm=jpg";
+    messageText = "Good night!";
   }
 
   console.log(messageText); 
@@ -128,35 +117,3 @@ var partyEvent = function()
 partyButton.addEventListener("click", partyEvent);
 partyEvent(); 
 
-
-// Activates Wake-Up selector
-var wakeUpTimeSelector =  document.getElementById("wakeUpTimeSelector");
-
-var wakeUpEvent = function()
-{
-    wakeuptime = wakeUpTimeSelector.value;
-};
-
-wakeUpTimeSelector.addEventListener("change", wakeUpEvent);
-
-
-// Activates Lunch selector
-var lunchTimeSelector =  document.getElementById("lunchTimeSelector");
-
-var lunchEvent = function()
-{
-    lunchtime = lunchTimeSelector.value;
-};
-
-lunchTimeSelector.addEventListener("change", lunchEvent);
-
-
-// Activates Nap-Time selector
-var napTimeSelector =  document.getElementById("napTimeSelector");
-
-var napEvent = function()
-{
-    naptime = napTimeSelector.value;
-};
-
-napTimeSelector.addEventListener("change", napEvent);
